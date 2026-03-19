@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Helplines – MindfulSpace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="18" fill="url(#logoGrad)"/>
+            <path d="M12 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="18" cy="14" r="2.5" fill="#fff" opacity="0.8"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36">
+                <stop offset="0%" stop-color="#A78BFA"/>
+                <stop offset="100%" stop-color="#60A5FA"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">MindfulSpace</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="mood-tracker.html" class="nav-link">Mood Tracker</a></li>
+        <li><a href="journal.html" class="nav-link">Journal</a></li>
+        <li><a href="breathing.html" class="nav-link">Breathing</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="helplines.html" class="nav-link active">Helplines</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── PAGE HERO ─── -->
+  <section class="page-hero" style="background: linear-gradient(160deg, #FFF1F2 0%, #F5F3FF 100%);">
+    <div class="container">
+      <span class="section-tag page-hero-tag" style="background:#FFE4E6; color:#E11D48;">Emergency Help</span>
+      <h1>Support is <em>one call</em> away.</h1>
+      <p>If you or someone you know is in crisis, please reach out. There are people who want to listen and help you through this.</p>
+    </div>
+  </section>
+
+  <!-- ─── HELPLINES CONTENT ─── -->
+  <section class="helplines-page">
+    <div class="container">
+      
+      <div class="urgency-banner" data-animate="fade-up">
+        <div class="urgency-icon">🆘</div>
+        <div class="urgency-text">
+          <h3>Emergency Situation?</h3>
+          <p>If you're in immediate physical danger, please call national emergency services at <strong>112</strong> instantly.</p>
+        </div>
+      </div>
+
+      <div class="helpline-cat" data-animate="fade-up">
+        <h2>Psychological Support Helplines (India)</h2>
+        <div class="helpline-grid">
+          
+          <div class="helpline-card">
+            <div class="helpline-card-header">
+              <div class="helpline-logo">📞</div>
+              <div class="helpline-org">
+                <div class="helpline-name">Tele-MANAS</div>
+                <div class="helpline-desc">Govt. of India 24x7 Mental Health Helpline</div>
+              </div>
+            </div>
+            <div class="helpline-number">
+              <span>14416</span>
+              <small>Toll-Free</small>
+            </div>
+            <div class="helpline-tags">
+              <span class="htag available">24x7</span>
+              <span class="htag crisis">Crisis Support</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">A dedicated 24/7 tele-consultation service launched by the Government of India for those in need of psychological help.</p>
+            <a href="tel:14416" class="call-btn">Call Now</a>
+          </div>
+
+          <div class="helpline-card">
+            <div class="helpline-card-header">
+              <div class="helpline-logo">🤝</div>
+              <div class="helpline-org">
+                <div class="helpline-name">Vandrevala Foundation</div>
+                <div class="helpline-desc">Free Counseling Support</div>
+              </div>
+            </div>
+            <div class="helpline-number">
+              <span>9999 666 555</span>
+            </div>
+            <div class="helpline-tags">
+              <span class="htag available">24x7</span>
+              <span class="htag chat">WhatsApp Avail.</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">Staffed by professional psychologists who can provide immediate support and crisis counseling.</p>
+            <a href="tel:+919999666555" class="call-btn">Call Now</a>
+          </div>
+
+          <div class="helpline-card">
+            <div class="helpline-card-header">
+              <div class="helpline-logo">☀️</div>
+              <div class="helpline-org">
+                <div class="helpline-name">iCall (TISS)</div>
+                <div class="helpline-desc">Tata Institute of Social Sciences</div>
+              </div>
+            </div>
+            <div class="helpline-number">
+              <span>9152987821</span>
+            </div>
+            <div class="helpline-tags">
+              <span class="htag chat">Mon-Sat (10AM-8PM)</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">Offers professional counseling via phone and email. Trusted by students across India.</p>
+            <a href="tel:+919152987821" class="call-btn">Call Now</a>
+          </div>
+
+          <div class="helpline-card">
+            <div class="helpline-card-header">
+              <div class="helpline-logo">🌬️</div>
+              <div class="helpline-org">
+                <div class="helpline-name">Kiran (Govt.)</div>
+                <div class="helpline-desc">National Health Helpline</div>
+              </div>
+            </div>
+            <div class="helpline-number">
+              <span>1800-599-0019</span>
+              <small>Toll-Free</small>
+            </div>
+            <div class="helpline-tags">
+              <span class="htag available">24x7</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">A dedicated helpline for early screening, first aid, and psychological support launched by the MSJE.</p>
+            <a href="tel:18005990019" class="call-btn">Call Now</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="18" fill="url(#footerLogoGrad)"/>
+            </svg>
+          </div>
+          <span class="logo-text">MindfulSpace</span>
+        </a>
+        <p class="footer-tagline">We care for you, always.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 MindfulSpace. Resources aggregated from public records.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

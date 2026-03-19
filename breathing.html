@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breathing Exercise – MindfulSpace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="18" fill="url(#logoGrad)"/>
+            <path d="M12 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="18" cy="14" r="2.5" fill="#fff" opacity="0.8"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36">
+                <stop offset="0%" stop-color="#A78BFA"/>
+                <stop offset="100%" stop-color="#60A5FA"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">MindfulSpace</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="mood-tracker.html" class="nav-link">Mood Tracker</a></li>
+        <li><a href="journal.html" class="nav-link">Journal</a></li>
+        <li><a href="breathing.html" class="nav-link active">Breathing</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="helplines.html" class="nav-link">Helplines</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── PAGE HERO ─── -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag page-hero-tag">Relaxation Technique</span>
+      <h1>Just <em>breathe</em>.</h1>
+      <p>A few moments of deep, conscious breathing can ground you and clear the mental fog. Choose a technique below.</p>
+    </div>
+  </section>
+
+  <!-- ─── BREATHING CONTENT ─── -->
+  <section class="breathing-page">
+    <div class="container">
+      <div class="breathing-container">
+        
+        <div class="breath-left" data-animate="fade-up">
+          <div class="breath-techniques">
+            <button class="technique-btn active" data-technique="4-7-8">4-7-8 Deep Calm</button>
+            <button class="technique-btn" data-technique="box">Box Breathing</button>
+            <button class="technique-btn" data-technique="relaxed">Quick Relax</button>
+          </div>
+
+          <div class="breath-visualizer">
+            <div class="breath-circle-outer"></div>
+            <div class="breath-circle-mid"></div>
+            <div class="breath-circle-inner">
+              <span class="breath-phase" id="breathPhase">READY</span>
+              <span class="breath-count" id="breathCount">–</span>
+            </div>
+          </div>
+
+          <div class="breath-controls">
+            <button class="btn btn-primary btn-lg" id="startBreath">▶ Start</button>
+          </div>
+        </div>
+
+        <div class="breath-right" data-animate="fade-up" data-delay="200">
+          <div class="breath-info-cards">
+            <div class="breath-info-card">
+              <h4>About This Technique</h4>
+              <p id="techniqueDesc">Calms the nervous system. Great for anxiety & sleep.</p>
+              <div class="breath-pattern" id="breathPattern">
+                <span class="pattern-block">Inhale 4s</span>
+                <span class="pattern-block">Hold 7s</span>
+                <span class="pattern-block">Exhale 8s</span>
+              </div>
+            </div>
+
+            <div class="breath-info-card">
+              <h4>Best Practices</h4>
+              <p>Find a comfortable sitting position. Keep your back straight but relaxed. Close your eyes or soften your gaze. Breathe in through your nose and out through your mouth.</p>
+            </div>
+
+            <div class="breath-info-card">
+              <h4>When to use?</h4>
+              <p>When you feel overwhelmed, before an exam, or when you are having trouble falling asleep.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="18" fill="url(#footerLogoGrad)"/>
+              <path d="M12 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="18" cy="14" r="2.5" fill="#fff" opacity="0.8"/>
+              <defs>
+                <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="36" y2="36">
+                  <stop offset="0%" stop-color="#A78BFA"/>
+                  <stop offset="100%" stop-color="#60A5FA"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="logo-text">MindfulSpace</span>
+        </a>
+        <p class="footer-tagline">Finding calm in the middle of student life.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 MindfulSpace.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

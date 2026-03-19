@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Tracker – MindfulSpace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="18" fill="url(#logoGrad)"/>
+            <path d="M12 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="18" cy="14" r="2.5" fill="#fff" opacity="0.8"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36">
+                <stop offset="0%" stop-color="#A78BFA"/>
+                <stop offset="100%" stop-color="#60A5FA"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">MindfulSpace</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="mood-tracker.html" class="nav-link active">Mood Tracker</a></li>
+        <li><a href="journal.html" class="nav-link">Journal</a></li>
+        <li><a href="breathing.html" class="nav-link">Breathing</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="helplines.html" class="nav-link">Helplines</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── PAGE HERO ─── -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag page-hero-tag">Mental Well-being</span>
+      <h1>How are you <em>feeling</em> today?</h1>
+      <p>Taking a moment to check in with yourself is the first step toward emotional awareness. There are no wrong answers here.</p>
+    </div>
+  </section>
+
+  <!-- ─── MOOD CONTENT ─── -->
+  <section class="mood-page">
+    <div class="container">
+      <div class="mood-grid">
+        
+        <div class="mood-card" data-animate="fade-up">
+          <h2>Log Your Mood</h2>
+          <form id="moodForm">
+            <div class="form-group">
+              <label class="form-label">Pick an Emoji that fits best:</label>
+              <div class="mood-emojis">
+                <button type="button" class="mood-emoji-btn" data-label="Amazing" data-val="10"><span class="emoji">🤩</span><span>Amazing</span></button>
+                <button type="button" class="mood-emoji-btn" data-label="Good" data-val="8"><span class="emoji">😊</span><span>Good</span></button>
+                <button type="button" class="mood-emoji-btn" data-label="Neutral" data-val="5"><span class="emoji">😐</span><span>Okay</span></button>
+                <button type="button" class="mood-emoji-btn" data-label="Anxious" data-val="3"><span class="emoji">😰</span><span>Anxious</span></button>
+                <button type="button" class="mood-emoji-btn" data-label="Sad" data-val="2"><span class="emoji">😢</span><span>Sad</span></button>
+                <button type="button" class="mood-emoji-btn" data-label="Stressed" data-val="1"><span class="emoji">😫</span><span>Stressed</span></button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="mood-label">
+                <span>Intensity</span>
+                <span id="moodSliderVal">5</span>
+              </div>
+              <input type="range" id="moodIntensity" class="mood-slider" min="1" max="10" value="5">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="moodTrigger">What's the main trigger?</label>
+              <select id="moodTrigger" class="form-select">
+                <option value="academics">Academics / Exams</option>
+                <option value="social">Social / Friends</option>
+                <option value="family">Family</option>
+                <option value="health">Health / Sleep</option>
+                <option value="personal">Personal Growth</option>
+                <option value="unknown">Not sure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="moodNote">Add a quick note (Optional)</label>
+              <textarea id="moodNote" class="form-textarea" placeholder="What's on your mind?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">Save Log</button>
+          </form>
+        </div>
+
+        <div class="mood-history" data-animate="fade-up" data-delay="200">
+          <h2>Recent Check-ins</h2>
+          <div id="moodHistoryList">
+            <!-- Entries injected by JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="18" fill="url(#footerLogoGrad)"/>
+              <path d="M12 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="18" cy="14" r="2.5" fill="#fff" opacity="0.8"/>
+              <defs>
+                <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="36" y2="36">
+                  <stop offset="0%" stop-color="#A78BFA"/>
+                  <stop offset="100%" stop-color="#60A5FA"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="logo-text">MindfulSpace</span>
+        </a>
+        <p class="footer-tagline">A safe space for every student's mental wellness journey.</p>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="mood-tracker.html">Mood Tracker</a></li>
+            <li><a href="journal.html">Journal</a></li>
+            <li><a href="breathing.html">Breathing Exercises</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="helplines.html">Emergency Helplines</a></li>
+            <li><a href="index.html#features">About Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 MindfulSpace. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
