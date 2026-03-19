@@ -2,7 +2,30 @@
 //  MINDFULSPACE – MAIN JS
 // ================================================
 
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ─── THEME TOGGLE ───
+  const themeToggle = document.getElementById('themeToggle');
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    if (themeToggle) themeToggle.textContent = dark ? '☀️' : '🌙';
+    localStorage.setItem('msTheme', dark ? 'dark' : 'light');
+  }
+  // Set correct icon on page load
+  if (themeToggle) {
+    themeToggle.textContent = localStorage.getItem('msTheme') === 'dark' ? '☀️' : '🌙';
+  }
+  themeToggle?.addEventListener('click', () => {
+    const currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    applyTheme(!currentlyDark);
+  });
+
+
 
   // ─── NAVBAR SCROLL ───
   const navbar = document.getElementById('navbar');
