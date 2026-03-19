@@ -2,7 +2,15 @@
 //  MINDFULSPACE – MAIN JS
 // ================================================
 
+// ─── INITIAL THEME CHECK ───
+(function() {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+
 
   // ─── NAVBAR SCROLL ───
   const navbar = document.getElementById('navbar');
@@ -347,4 +355,56 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => toast.remove(), 3200);
   }
 
+  // ─── THEME TOGGLE (DARK MODE) ───
+  const themeToggle = document.getElementById('themeToggle');
+
+  themeToggle?.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const darkMode = document.body.classList.contains('dark');
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+    showToast(`${darkMode ? 'Dark' : 'Light'} Mode Enabled`, 'success');
+  });
+
+  // ─── DAILY WELLNESS HUB LOGIC ───
+  const affirmations = [
+    "Your growth is a journey, not a destination. Celebrate every step.",
+    "Breathe. You are exactly where you need to be.",
+    "Small progress is still progress. Keep going.",
+    "Your mental health is just as important as your physical health.",
+    "You are resilient, capable, and stronger than you think.",
+    "It's okay to not be okay. Healing takes time.",
+    "Be kind to yourself today. You are doing your best."
+  ];
+
+  const affirmationText = document.getElementById('dailyAffirmation');
+  if (affirmationText) {
+    const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+    affirmationText.textContent = `"${affirmations[dayOfYear % affirmations.length]}"`;
+  }
+
+  // Self-care Checklist
+  const checkboxes = document.querySelectorAll('.check-item input');
+  const progressText = document.getElementById('checklistProgress');
+  
+  function updateChecklistProgress() {
+    const total = checkboxes.length;
+    const checked = Array.from(checkboxes).filter(i => i.checked).length;
+    if (progressText) progressText.textContent = `${checked}/${total} Done`;
+    
+    // Save state
+    const states = {};
+    checkboxes.forEach(i => states[i.dataset.habit] = i.checked);
+    localStorage.setItem('wellnessHabits', JSON.stringify(states));
+  }
+
+  if (checkboxes.length) {
+    const savedStates = JSON.parse(localStorage.getItem('wellnessHabits') || '{}');
+    checkboxes.forEach(i => {
+      i.checked = !!savedStates[i.dataset.habit];
+      i.addEventListener('change', updateChecklistProgress);
+    });
+    updateChecklistProgress();
+  }
+
 });
+
