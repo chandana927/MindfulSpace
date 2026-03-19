@@ -1085,3 +1085,28 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .dashboard-grid { grid-template-columns: repeat(2,1fr); }
   .footer-links-grid { grid-template-columns: 1fr; }
 }
+
+/* ─── DELETE BUTTONS ─── */
+.delete-entry-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(244, 63, 94, 0.08);
+  color: var(--rose-500);
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: var(--transition);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.delete-entry-btn:hover {
+  background: var(--rose-500);
+  color: #fff;
+  opacity: 1;
+  transform: scale(1.1);
+}
+.mood-entry { position: relative; }
+.journal-entry-card { position: relative; }
