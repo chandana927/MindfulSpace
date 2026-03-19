@@ -1,13 +1,7 @@
+
 // ================================================
 //  MINDFULSPACE – MAIN JS
 // ================================================
-
-// ─── INITIAL THEME CHECK ───
-(function() {
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-  }
-})();
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -354,16 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 3200);
   }
-
-  // ─── THEME TOGGLE (DARK MODE) ───
-  const themeToggle = document.getElementById('themeToggle');
-
-  themeToggle?.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const darkMode = document.body.classList.contains('dark');
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    showToast(`${darkMode ? 'Dark' : 'Light'} Mode Enabled`, 'success');
-  });
 
   // ─── DAILY WELLNESS HUB LOGIC ───
   const affirmations = [
