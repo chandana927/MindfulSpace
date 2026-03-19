@@ -1,9 +1,11 @@
+
 // ================================================
 //  MINDFULSPACE – MAIN JS
 // ================================================
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
 
   // ─── THEME TOGGLE ───
   const themeToggle = document.getElementById('themeToggle');
@@ -97,7 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('Mood logged successfully! 🎉', 'success');
       moodForm.reset();
       document.querySelectorAll('.mood-emoji-btn').forEach(b => b.classList.remove('selected'));
+      if (moodSliderVal) moodSliderVal.textContent = '5';
       renderMoodHistory();
+    });
+
+    moodForm.addEventListener('reset', () => {
+      document.querySelectorAll('.mood-emoji-btn').forEach(b => b.classList.remove('selected'));
+      if (moodSliderVal) moodSliderVal.textContent = '5';
     });
   }
 
@@ -124,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:24px">No entries yet. Log your first mood! 🌱</p>';
       return;
     }
-    container.innerHTML = entries.map(e => `
+    container.innerHTML = entries.map((e, idx) => `
       <div class="mood-entry">
         <div class="entry-emoji">${e.emoji}</div>
         <div class="entry-info">
@@ -132,10 +140,22 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="entry-mood">${e.label}</div>
           ${e.note ? `<div class="entry-note">${e.note}</div>` : ''}
         </div>
-        <div class="entry-score">${e.intensity}/10</div>
+        <div class="entry-score" style="margin-right: 12px;">${e.intensity}/10</div>
+        <button class="delete-entry-btn" onclick="deleteEntry('moodEntries', ${idx})" title="Delete entry">×</button>
       </div>`).join('');
   }
   renderMoodHistory();
+
+  // ─── GLOBAL DELETE HELPER ───
+  window.deleteEntry = (key, index) => {
+    const entries = JSON.parse(localStorage.getItem(key) || '[]');
+    entries.splice(index, 1);
+    localStorage.setItem(key, JSON.stringify(entries));
+    if (key === 'moodEntries') renderMoodHistory();
+    else if (key === 'journalEntries') renderJournalEntries();
+    updateDashboardStats();
+    showToast('Entry deleted', 'warning');
+  };
 
   // ─── JOURNAL WORD COUNT ───
   const journalTA = document.getElementById('journalText');
@@ -180,6 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (wordCount) wordCount.textContent = '0 words';
       renderJournalEntries();
     });
+
+    journalForm.addEventListener('reset', () => {
+      if (wordCount) wordCount.textContent = '0 words';
+    });
   }
 
   function renderJournalEntries() {
@@ -190,11 +214,14 @@ document.addEventListener('DOMContentLoaded', () => {
       container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:24px">Your journal is empty. Start writing! ✍️</p>';
       return;
     }
-    container.innerHTML = entries.map(e => `
+    container.innerHTML = entries.map((e, idx) => `
       <div class="journal-entry-card">
         <div class="jentry-header">
           <span class="jentry-date">${e.date}</span>
-          <span class="jentry-mood-tag">${e.mood}</span>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="jentry-mood-tag">${e.mood}</span>
+            <button class="delete-entry-btn" onclick="event.stopPropagation(); deleteEntry('journalEntries', ${idx})" title="Delete entry">×</button>
+          </div>
         </div>
         <div class="jentry-title">${e.title}</div>
         <div class="jentry-preview">${e.text.slice(0, 120)}${e.text.length > 120 ? '...' : ''}</div>
@@ -345,4 +372,46 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => toast.remove(), 3200);
   }
 
+  // ─── DAILY WELLNESS HUB LOGIC ───
+  const affirmations = [
+    "Your growth is a journey, not a destination. Celebrate every step.",
+    "Breathe. You are exactly where you need to be.",
+    "Small progress is still progress. Keep going.",
+    "Your mental health is just as important as your physical health.",
+    "You are resilient, capable, and stronger than you think.",
+    "It's okay to not be okay. Healing takes time.",
+    "Be kind to yourself today. You are doing your best."
+  ];
+
+  const affirmationText = document.getElementById('dailyAffirmation');
+  if (affirmationText) {
+    const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+    affirmationText.textContent = `"${affirmations[dayOfYear % affirmations.length]}"`;
+  }
+
+  // Self-care Checklist
+  const checkboxes = document.querySelectorAll('.check-item input');
+  const progressText = document.getElementById('checklistProgress');
+  
+  function updateChecklistProgress() {
+    const total = checkboxes.length;
+    const checked = Array.from(checkboxes).filter(i => i.checked).length;
+    if (progressText) progressText.textContent = `${checked}/${total} Done`;
+    
+    // Save state
+    const states = {};
+    checkboxes.forEach(i => states[i.dataset.habit] = i.checked);
+    localStorage.setItem('wellnessHabits', JSON.stringify(states));
+  }
+
+  if (checkboxes.length) {
+    const savedStates = JSON.parse(localStorage.getItem('wellnessHabits') || '{}');
+    checkboxes.forEach(i => {
+      i.checked = !!savedStates[i.dataset.habit];
+      i.addEventListener('change', updateChecklistProgress);
+    });
+    updateChecklistProgress();
+  }
+
 });
+

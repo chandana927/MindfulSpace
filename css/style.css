@@ -1211,3 +1211,51 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .dashboard-grid { grid-template-columns: repeat(2,1fr); }
   .footer-links-grid { grid-template-columns: 1fr; }
 }
+
+/* ─── DELETE BUTTONS ─── */
+.delete-entry-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(244, 63, 94, 0.08);
+  color: var(--rose-500);
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: var(--transition);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.delete-entry-btn:hover {
+  background: var(--rose-500);
+  color: #fff;
+  opacity: 1;
+  transform: scale(1.1);
+}
+.mood-entry { position: relative; }
+.journal-entry-card { position: relative; }
+
+/* ─── WELLNESS HUB ─── */
+.wellness-hub { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-bottom: 40px; margin-top: 40px; }
+.affirmation-card { background: linear-gradient(135deg, var(--purple-500), var(--blue-500)); color: #fff; padding: 40px; border-radius: var(--radius-xl); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; min-height: 240px; box-shadow: var(--shadow-lg); }
+.affirmation-card::before { content: '“'; position: absolute; top: -30px; left: 10px; font-size: 15rem; opacity: 0.1; font-family: serif; color: #fff; }
+.hub-tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.7); margin-bottom: 16px; position: relative; z-index: 1; }
+#dailyAffirmation { font-size: 1.4rem; font-weight: 700; line-height: 1.4; color: #fff; position: relative; z-index: 1; margin-bottom: 16px; }
+.affirmation-author { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.6); position: relative; z-index: 1; display: block; }
+.checklist-card { background: #fff; border: 1.5px solid var(--gray-100); border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-md); }
+.hub-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.hub-header h3 { font-size: 1.2rem; font-weight: 800; }
+#checklistProgress { font-size: 0.8rem; font-weight: 800; color: var(--purple-600); background: var(--purple-50); padding: 5px 14px; border-radius: var(--radius-full); }
+.checklist-items { display: flex; flex-direction: column; gap: 14px; }
+.check-item { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+.check-item input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+.check-box { height: 24px; width: 24px; background-color: var(--gray-50); border: 2.5px solid var(--gray-200); border-radius: 8px; transition: 0.2s; position: relative; }
+.check-item:hover input ~ .check-box { border-color: var(--purple-300); }
+.check-item input:checked ~ .check-box { background-color: var(--green-500); border-color: var(--green-500); }
+.check-box:after { content: ""; position: absolute; display: none; left: 7px; top: 3px; width: 5px; height: 10px; border: solid white; border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
+.check-item input:checked ~ .check-box:after { display: block; }
+.check-text { font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); transition: 0.2s; }
+
+
