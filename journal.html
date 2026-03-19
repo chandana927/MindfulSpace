@@ -39,6 +39,7 @@
         <li><a href="helplines.html" class="nav-link">Helplines</a></li>
       </ul>
       <div class="nav-actions">
+        <button class="nav-theme-toggle" id="themeToggle" title="Toggle theme">🌓</button>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
@@ -109,9 +110,9 @@
               <textarea id="journalText" class="journal-textarea" placeholder="Start writing something meaningful..."></textarea>
             </div>
 
-            <div class="journal-actions">
-              <button type="submit" class="btn btn-primary btn-lg">Save Entry</button>
-              <button type="reset" class="btn btn-ghost">Clear All</button>
+            <div class="journal-actions" style="display: flex; gap: 12px; margin-top: 24px;">
+              <button type="submit" class="btn btn-primary btn-lg" style="flex: 3; justify-content: center;">Save Entry</button>
+              <button type="reset" class="btn btn-ghost" id="journalReset" style="flex: 1; justify-content: center;">Clear All</button>
             </div>
           </form>
         </div>
