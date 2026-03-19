@@ -1,0 +1,29 @@
+# OS junk
+.DS_Store
+Thumbs.db
+.directory
+
+# IDE Specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary Files
+tmp/
+temp/
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local node_modules (if any, though none seen)
+node_modules/
+
+# Local Dev Env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
